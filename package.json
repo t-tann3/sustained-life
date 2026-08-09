@@ -2,25 +2,21 @@
   "name": "sustained-life",
   "version": "0.1.0",
   "private": true,
+  "workspaces": [
+    "frontend",
+    "server",
+    "admin"
+  ],
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "eslint"
-  },
-  "dependencies": {
-    "next": "16.3.0",
-    "react": "19.2.8",
-    "react-dom": "19.2.8"
-  },
-  "devDependencies": {
-    "@tailwindcss/postcss": "^4",
-    "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
-    "eslint": "^9",
-    "eslint-config-next": "16.3.0",
-    "tailwindcss": "^4",
-    "typescript": "^5"
+    "dev:frontend": "npm run dev --workspace=frontend",
+    "dev:server": "npm run dev --workspace=server",
+    "dev:admin": "npm run dev --workspace=admin",
+    "build": "npm run build --workspace=server && npm run build --workspace=frontend && npm run build --workspace=admin",
+    "build:frontend": "npm run build --workspace=frontend",
+    "build:server": "npm run build --workspace=server",
+    "build:admin": "npm run build --workspace=admin",
+    "start:frontend": "npm run start --workspace=frontend",
+    "start:server": "npm run start --workspace=server",
+    "start:admin": "npm run start --workspace=admin"
   }
 }

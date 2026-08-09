@@ -1,0 +1,33 @@
+@import "tailwindcss";
+
+:root {
+  --forest: #123f36;
+  --forest-dark: #0a2b25;
+  --sage: #dfe9df;
+  --gold: #c58a2a;
+  --ivory: #f7f8f6;
+  --paper: #ffffff;
+  --ink: #18312c;
+  --muted: #586b66;
+  --line: #d8e1dc;
+}
+
+@theme inline {
+  --color-forest: var(--forest);
+  --color-forest-dark: var(--forest-dark);
+  --color-sage: var(--sage);
+  --color-gold: var(--gold);
+  --color-ivory: var(--ivory);
+  --color-paper: var(--paper);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --font-sans: var(--font-sans);
+}
+
+body {
+  margin: 0;
+  color: var(--ink);
+  background: var(--ivory);
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+}

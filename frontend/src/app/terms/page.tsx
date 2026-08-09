@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import Link from "next/link";
 import {
   Container,
@@ -7,10 +7,12 @@ import {
   Section,
 } from "@/components/ui";
 
-export const metadata: Metadata = {
-  title: "Terms of Service",
-  description: "Read the terms governing use of the Sustained Life, Inc. website.",
-};
+export const metadata = pageMetadata({
+  title: 'Terms of Service',
+  description:
+    'Read the terms governing use of the Sustained Life, Inc. website.',
+  path: '/terms',
+});
 
 export default function TermsPage() {
   return (

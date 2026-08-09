@@ -11,6 +11,7 @@ import {
   type AdminStats,
   type ContactPayload,
   type MethodRequestPayload,
+  type SpeakingRequestPayload,
   type Submission,
 } from "@/lib/api";
 
@@ -30,7 +31,9 @@ export default function OverviewPage() {
           submissionsResult.submissions
             .filter(
               (item) =>
-                item.type === "contact" || item.type === "method-request",
+                item.type === "contact" ||
+                item.type === "method-request" ||
+                item.type === "speaking-request",
             )
             .slice(0, 5),
         );
@@ -59,8 +62,8 @@ export default function OverviewPage() {
             href="/messages"
           />
           <StatCard
-            label="Method requests"
-            value={String(stats.methodRequests)}
+            label="Speaking requests"
+            value={String(stats.speakingRequests ?? 0)}
             href="/messages"
           />
           <StatCard
@@ -131,6 +134,26 @@ function RecentRow({ item }: { item: Submission }) {
         </div>
         <p className="mt-1 text-sm text-muted">{payload.email}</p>
         <p className="mt-2 line-clamp-2 text-sm">{payload.message}</p>
+        <p className="mt-2 text-xs text-muted">{formatDate(item.createdAt)}</p>
+      </Link>
+    );
+  }
+
+  if (item.type === "speaking-request") {
+    const payload = item.payload as SpeakingRequestPayload;
+    return (
+      <Link
+        href="/messages"
+        className="block border border-line bg-paper p-4 no-underline transition-colors hover:bg-sage/30"
+      >
+        <div className="flex flex-wrap items-center justify-between gap-2">
+          <p className="font-semibold text-forest">{payload.name}</p>
+          <p className="text-xs font-bold uppercase tracking-wide text-muted">
+            Speaking · {payload.format}
+          </p>
+        </div>
+        <p className="mt-1 text-sm text-muted">{payload.email}</p>
+        <p className="mt-2 line-clamp-2 text-sm">{payload.goals}</p>
         <p className="mt-2 text-xs text-muted">{formatDate(item.createdAt)}</p>
       </Link>
     );

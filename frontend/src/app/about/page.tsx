@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import Image from "next/image";
 import {
   ButtonLink,
@@ -10,11 +10,12 @@ import {
   Section,
 } from "@/components/ui";
 
-export const metadata: Metadata = {
-  title: "About Sustained Life, Inc.",
+export const metadata = pageMetadata({
+  title: 'About Sustained Life, Inc.',
   description:
-    "Meet Sustained Life, Inc. and discover our mission, values, whole-person approach, and founder Sophia Loren Blake.",
-};
+    'Meet Sustained Life, Inc. and discover our mission, values, whole-person approach, and founder Sophia Loren Blake.',
+  path: '/about',
+});
 
 const values = [
   ["Dignity", "We see people as partners with strengths, insight, and agency."],

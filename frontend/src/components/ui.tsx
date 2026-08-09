@@ -155,7 +155,10 @@ export function PageHero({
             <span key={`${crumb.label}-${index}`}>
               {index > 0 ? " / " : null}
               {crumb.href ? (
-                <Link href={crumb.href} className="text-white no-underline hover:text-white/80">
+                <Link
+                  href={crumb.href}
+                  className="!text-white no-underline hover:!text-white/80 focus:!text-white visited:!text-white"
+                >
                   {crumb.label}
                 </Link>
               ) : (

@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import {
   ButtonLink,
   Card,
@@ -11,11 +11,12 @@ import {
   Section,
 } from "@/components/ui";
 
-export const metadata: Metadata = {
-  title: "Food Is Medicine",
+export const metadata = pageMetadata({
+  title: 'Food Is Medicine',
   description:
-    "Learn how fresh fruits, vegetables, whole grains, beans, and other nutrient-dense foods can support overall health and well-being.",
-};
+    'Learn how fresh fruits, vegetables, whole grains, beans, and other nutrient-dense foods can support overall health and well-being.',
+  path: '/food-is-medicine',
+});
 
 const foods = [
   ["Vegetables", "Offer fiber and a wide range of vitamins and minerals. Try adding one extra color to lunch or dinner."],

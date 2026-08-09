@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import { MethodRequestForm } from "@/components/MethodRequestForm";
 import {
   ButtonLink,
@@ -10,11 +10,12 @@ import {
   Section,
 } from "@/components/ui";
 
-export const metadata: Metadata = {
-  title: "The Sustained Life Method",
+export const metadata = pageMetadata({
+  title: 'The Sustained Life Method',
   description:
-    "Discover a practical whole-person framework connecting nourishing food, knowledge, stewardship, relationships, and healthy community systems.",
-};
+    'Discover a practical whole-person framework connecting nourishing food, knowledge, stewardship, relationships, and healthy community systems.',
+  path: '/method',
+});
 
 const pillars = [
   ["01", "Nourishing Food", "Build meals and food environments around accessible, nutrient-dense choices."],

@@ -7,10 +7,11 @@ import {
   formatDate,
   type ContactPayload,
   type MethodRequestPayload,
+  type SpeakingRequestPayload,
   type Submission,
 } from "@/lib/api";
 
-type Tab = "contact" | "method-request";
+type Tab = "contact" | "method-request" | "speaking-request";
 
 export default function MessagesPage() {
   const [tab, setTab] = useState<Tab>("contact");
@@ -38,6 +39,7 @@ export default function MessagesPage() {
 
   const countsLabel = useMemo(() => {
     if (tab === "contact") return "Contact form";
+    if (tab === "speaking-request") return "Speaking requests";
     return "Method requests";
   }, [tab]);
 
@@ -47,7 +49,7 @@ export default function MessagesPage() {
         <div>
           <h2 className="text-2xl font-bold text-forest">Messages</h2>
           <p className="mt-1 text-muted">
-            Inbox for the public Contact form and Sustained Life Method requests.
+            Inbox for Contact, Method, and Speaking request submissions.
           </p>
         </div>
         <button
@@ -70,11 +72,19 @@ export default function MessagesPage() {
           onClick={() => setTab("method-request")}
           label="Method requests"
         />
+        <TabButton
+          active={tab === "speaking-request"}
+          onClick={() => setTab("speaking-request")}
+          label="Speaking requests"
+        />
       </div>
 
       <div className="mb-4 flex items-center justify-between gap-3">
         <p className="text-sm font-semibold text-forest">
-          {countsLabel}: {loading ? "…" : `${items.length} submission${items.length === 1 ? "" : "s"}`}
+          {countsLabel}:{" "}
+          {loading
+            ? "…"
+            : `${items.length} submission${items.length === 1 ? "" : "s"}`}
         </p>
       </div>
 
@@ -84,23 +94,29 @@ export default function MessagesPage() {
 
       {!loading && !error && items.length === 0 ? (
         <div className="border border-line bg-paper p-6">
-          <p className="font-semibold text-forest">No {countsLabel.toLowerCase()} yet</p>
+          <p className="font-semibold text-forest">
+            No {countsLabel.toLowerCase()} yet
+          </p>
           <p className="mt-2 text-sm text-muted">
             {tab === "contact"
               ? "When someone submits the Contact page form on the public site, their message will show up here."
-              : "When someone submits the Method request form, it will show up here."}
+              : tab === "speaking-request"
+                ? "When someone submits the Speaking page request form, it will show up here."
+                : "When someone submits the Method request form, it will show up here."}
           </p>
         </div>
       ) : null}
 
       <div className="space-y-4">
-        {items.map((item) =>
-          item.type === "contact" ? (
-            <ContactCard key={item.id} item={item} />
-          ) : (
-            <MethodCard key={item.id} item={item} />
-          ),
-        )}
+        {items.map((item) => {
+          if (item.type === "contact") {
+            return <ContactCard key={item.id} item={item} />;
+          }
+          if (item.type === "speaking-request") {
+            return <SpeakingCard key={item.id} item={item} />;
+          }
+          return <MethodCard key={item.id} item={item} />;
+        })}
       </div>
     </AdminShell>
   );
@@ -186,6 +202,50 @@ function MethodCard({ item }: { item: Submission }) {
         <Field
           label="What they hope to accomplish"
           value={payload.message}
+          className="sm:col-span-2"
+        />
+      </dl>
+    </article>
+  );
+}
+
+function SpeakingCard({ item }: { item: Submission }) {
+  const payload = item.payload as SpeakingRequestPayload;
+
+  return (
+    <article className="border border-line bg-paper p-5">
+      <div className="flex flex-wrap items-start justify-between gap-3">
+        <div>
+          <p className="text-xs font-bold uppercase tracking-[0.12em] text-muted">
+            Speaking request
+          </p>
+          <h3 className="mt-1 text-lg font-bold text-forest">{payload.name}</h3>
+          <p className="text-sm text-muted">{formatDate(item.createdAt)}</p>
+        </div>
+        <p className="rounded bg-sage px-2 py-1 text-xs font-bold uppercase tracking-wide text-forest">
+          {payload.format}
+        </p>
+      </div>
+      <dl className="mt-4 grid gap-3 text-sm sm:grid-cols-2">
+        <Field label="Email" value={payload.email} />
+        <Field label="Phone" value={payload.phone || "—"} />
+        <Field label="Organization" value={payload.organization} />
+        <Field label="Event" value={payload.event} />
+        <Field label="Date / timeframe" value={payload.date} />
+        <Field label="Location" value={payload.location} />
+        <Field label="Topic" value={payload.topic} className="sm:col-span-2" />
+        <Field
+          label="Audience size"
+          value={
+            payload.audienceSize !== undefined
+              ? String(payload.audienceSize)
+              : "—"
+          }
+        />
+        <Field label="Goals" value={payload.goals} className="sm:col-span-2" />
+        <Field
+          label="Additional details"
+          value={payload.details || "—"}
           className="sm:col-span-2"
         />
       </dl>

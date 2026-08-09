@@ -1,4 +1,8 @@
-export type SubmissionType = "contact" | "method-request" | "newsletter";
+export type SubmissionType =
+  | "contact"
+  | "method-request"
+  | "speaking-request"
+  | "newsletter";
 
 export type ApiResult<T = undefined> =
   | { ok: true; message: string; data?: T }
@@ -29,11 +33,31 @@ export type NewsletterInput = {
   email: string;
 };
 
+export type SpeakingRequestInput = {
+  name: string;
+  organization: string;
+  email: string;
+  phone?: string;
+  event: string;
+  date: string;
+  location: string;
+  format: string;
+  audienceSize?: number;
+  topic: string;
+  goals: string;
+  details?: string;
+  consent: boolean;
+};
+
 export type StoredSubmission = {
   id: string;
   type: SubmissionType;
   createdAt: string;
-  payload: ContactInput | MethodRequestInput | NewsletterInput;
+  payload:
+    | ContactInput
+    | MethodRequestInput
+    | SpeakingRequestInput
+    | NewsletterInput;
 };
 
 export type DonationStatus = "pledged" | "received" | "refunded";
@@ -58,6 +82,7 @@ export type StoredDonation = DonationInput & {
 export type AdminStats = {
   contacts: number;
   methodRequests: number;
+  speakingRequests: number;
   newsletterSubscribers: number;
   donations: {
     count: number;

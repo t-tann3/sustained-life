@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import {
   ButtonLink,
   Card,
@@ -9,11 +9,12 @@ import {
   Section,
 } from "@/components/ui";
 
-export const metadata: Metadata = {
-  title: "Healthy Living Resources",
+export const metadata = pageMetadata({
+  title: 'Healthy Living Resources',
   description:
-    "Explore practical Sustained Life guides for nourishing food, healthy habits, stewardship, families, and community wellness.",
-};
+    'Explore practical Sustained Life guides for nourishing food, healthy habits, stewardship, families, and community wellness.',
+  path: '/resources',
+});
 
 const resources = [
   ["01", "Build a Balanced Plate", "A simple guide to combining vegetables, fruits, grains, proteins, and water.", "Guide coming soon"],

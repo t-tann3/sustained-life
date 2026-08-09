@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import Link from "next/link";
 import {
   Card,
@@ -9,11 +9,12 @@ import {
   Section,
 } from "@/components/ui";
 
-export const metadata: Metadata = {
-  title: "Blog",
+export const metadata = pageMetadata({
+  title: 'Blog',
   description:
-    "Read practical reflections on nourishing food, whole-person wellness, stewardship, faith-sensitive support, and community health.",
-};
+    'Read practical reflections on nourishing food, whole-person wellness, stewardship, faith-sensitive support, and community health.',
+  path: '/blog',
+});
 
 const posts = [
   {

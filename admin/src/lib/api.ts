@@ -52,6 +52,7 @@ async function adminFetch<T>(path: string, init?: RequestInit): Promise<T> {
 export type AdminStats = {
   contacts: number;
   methodRequests: number;
+  speakingRequests: number;
   newsletterSubscribers: number;
   donations: {
     count: number;
@@ -81,17 +82,33 @@ export type MethodRequestPayload = {
   message: string;
 };
 
+export type SpeakingRequestPayload = {
+  name: string;
+  organization: string;
+  email: string;
+  phone?: string;
+  event: string;
+  date: string;
+  location: string;
+  format: string;
+  audienceSize?: number;
+  topic: string;
+  goals: string;
+  details?: string;
+};
+
 export type NewsletterPayload = {
   email: string;
 };
 
 export type Submission = {
   id: string;
-  type: "contact" | "method-request" | "newsletter";
+  type: "contact" | "method-request" | "speaking-request" | "newsletter";
   createdAt: string;
   payload:
     | ContactPayload
     | MethodRequestPayload
+    | SpeakingRequestPayload
     | NewsletterPayload
     | Record<string, unknown>;
 };

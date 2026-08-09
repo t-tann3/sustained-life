@@ -1,12 +1,13 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import Link from "next/link";
 import { Container, PageHero, Section } from "@/components/ui";
 
-export const metadata: Metadata = {
-  title: "Accessibility Statement",
+export const metadata = pageMetadata({
+  title: 'Accessibility Statement',
   description:
     "Read Sustained Life's commitment to an inclusive and accessible website experience.",
-};
+  path: '/accessibility',
+});
 
 export default function AccessibilityPage() {
   return (

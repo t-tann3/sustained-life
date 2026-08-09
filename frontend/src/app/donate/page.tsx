@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import {
   ButtonLink,
   Card,
@@ -11,11 +11,12 @@ import {
   Section,
 } from "@/components/ui";
 
-export const metadata: Metadata = {
-  title: "Donate",
+export const metadata = pageMetadata({
+  title: 'Donate',
   description:
-    "Support Sustained Life education, resources, partnerships, and whole-person community wellness initiatives.",
-};
+    'Support Sustained Life education, resources, partnerships, and whole-person community wellness initiatives.',
+  path: '/donate',
+});
 
 export default function DonatePage() {
   return (

@@ -50,7 +50,36 @@ Admin features:
 | `GET` | `/api/admin/stats` | Dashboard stats (admin) |
 | `GET/POST` | `/api/admin/donations` | Donation tracking (admin) |
 
-Local data files:
+### Database (MongoDB)
 
-- `server/data/submissions.json`
-- `server/data/donations.json`
+The API stores form submissions and donations in **MongoDB** when `MONGODB_URI` is set in `server/.env`.
+
+1. Create a free cluster at [MongoDB Atlas](https://www.mongodb.com/cloud/atlas)
+2. Create a database user and allow network access (for local: your IP; for DigitalOcean: `0.0.0.0/0` or the app’s outbound IPs)
+3. Copy the connection string into `server/.env`:
+
+```bash
+MONGODB_URI=mongodb+srv://USER:PASSWORD@cluster0.xxxxx.mongodb.net/?retryWrites=true&w=majority
+MONGODB_DB=sustained_life
+```
+
+4. Restart the API. Health check will report `"storage": "mongodb"`.
+
+If `MONGODB_URI` is missing, the API falls back to local JSON files (`server/data/`). On first Mongo connect, any existing JSON data is imported automatically when the collections are empty.
+
+On DigitalOcean App Platform, add `MONGODB_URI` (and optionally `MONGODB_DB`) as encrypted env vars for the API component.
+
+### Deploy API on DigitalOcean App Platform
+
+Because this repo is an npm monorepo, set the component like this:
+
+| Setting | Value |
+|--------|--------|
+| Source directory | `server` |
+| Build command | `npm run do:build` |
+| Run command | `npm run do:start` |
+| HTTP port | `8080` (App Platform sets `PORT`) |
+
+`do:build` installs dependencies **inside** `server/` (avoids workspace hoisting to the repo root, which breaks the run image).
+
+Required env vars: `MONGODB_URI`, `MONGODB_DB`, `ADMIN_SECRET`, `FRONTEND_ORIGIN`.

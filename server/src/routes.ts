@@ -18,7 +18,12 @@ import {
   handleNewsletterSubmission,
   parseNewsletterInput,
 } from "./handlers/newsletter.js";
+import {
+  handleSpeakingRequestSubmission,
+  parseSpeakingRequestInput,
+} from "./handlers/speaking-request.js";
 import { getAdminStats } from "./handlers/stats.js";
+import { isMongoEnabled } from "./db.js";
 import { listDonations } from "./donations-store.js";
 import { listSubmissions } from "./store.js";
 import type { SubmissionType } from "./types.js";
@@ -26,13 +31,18 @@ import type { SubmissionType } from "./types.js";
 const VALID_TYPES = new Set<SubmissionType>([
   "contact",
   "method-request",
+  "speaking-request",
   "newsletter",
 ]);
 
 export const routes = Router();
 
 routes.get("/health", (_req, res) => {
-  res.json({ ok: true, service: "sustained-life-server" });
+  res.json({
+    ok: true,
+    service: "sustained-life-server",
+    storage: isMongoEnabled() ? "mongodb" : "json",
+  });
 });
 
 routes.post("/contact", async (req, res) => {
@@ -52,6 +62,13 @@ routes.post("/method-request", async (req, res) => {
 routes.post("/newsletter", async (req, res) => {
   const result = await handleNewsletterSubmission(
     parseNewsletterInput(req.body ?? {}),
+  );
+  res.status(result.ok ? 201 : 400).json(result);
+});
+
+routes.post("/speaking-request", async (req, res) => {
+  const result = await handleSpeakingRequestSubmission(
+    parseSpeakingRequestInput(req.body ?? {}),
   );
   res.status(result.ok ? 201 : 400).json(result);
 });

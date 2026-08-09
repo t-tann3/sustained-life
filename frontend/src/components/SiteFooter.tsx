@@ -10,12 +10,13 @@ const exploreLinks = [
   { href: "/about", label: "About us" },
   { href: "/method", label: "The Sustained Life Method" },
   { href: "/food-is-medicine", label: "Food Is Medicine" },
-  { href: "/speaking", label: "Speaking" },
+  { href: "/speaking", label: "Speaking & Advocacy" },
 ] as const;
 
 const takePartLinks = [
   { href: "/resources", label: "Resources" },
   { href: "/blog", label: "Blog" },
+  { href: "/newsletters", label: "Newsletters" },
   { href: "/donate", label: "Donate" },
   { href: "/contact", label: "Contact" },
 ] as const;
@@ -72,12 +73,20 @@ export function SiteFooter() {
             </ul>
           </div>
 
-          <div>
+          <div id="stay-connected">
             <h2 className="mb-3 text-base font-extrabold text-white">
               Stay connected
             </h2>
             <p>
               Receive practical ideas and updates from Sustained Life.
+            </p>
+            <p className="mt-3">
+              <Link
+                href="/newsletters"
+                className={`${footerLinkClass} font-bold underline underline-offset-2`}
+              >
+                View past newsletters →
+              </Link>
             </p>
             <NewsletterForm />
           </div>

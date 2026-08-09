@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import Link from "next/link";
 import {
   Container,
@@ -7,10 +7,12 @@ import {
   Section,
 } from "@/components/ui";
 
-export const metadata: Metadata = {
-  title: "Privacy Policy",
-  description: "Read the Sustained Life, Inc. website privacy policy.",
-};
+export const metadata = pageMetadata({
+  title: 'Privacy Policy',
+  description:
+    'Read the Sustained Life, Inc. website privacy policy.',
+  path: '/privacy',
+});
 
 export default function PrivacyPage() {
   return (

@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import { ContactForm } from "@/components/ContactForm";
 import {
   Card,
@@ -9,11 +9,12 @@ import {
   Section,
 } from "@/components/ui";
 
-export const metadata: Metadata = {
-  title: "Contact Sustained Life, Inc.",
+export const metadata = pageMetadata({
+  title: 'Contact Sustained Life, Inc.',
   description:
-    "Contact Sustained Life about partnerships, speaking, workshops, the Sustained Life Method, resources, or general questions.",
-};
+    'Contact Sustained Life about partnerships, speaking, workshops, the Sustained Life Method, resources, or general questions.',
+  path: '/contact',
+});
 
 export default function ContactPage() {
   return (

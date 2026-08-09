@@ -12,6 +12,9 @@ export async function getAdminStats(): Promise<AdminStats> {
   const methodRequests = submissions.filter(
     (item) => item.type === "method-request",
   ).length;
+  const speakingRequests = submissions.filter(
+    (item) => item.type === "speaking-request",
+  ).length;
   const newsletterSubscribers = submissions.filter(
     (item) => item.type === "newsletter",
   ).length;
@@ -22,6 +25,7 @@ export async function getAdminStats(): Promise<AdminStats> {
   return {
     contacts,
     methodRequests,
+    speakingRequests,
     newsletterSubscribers,
     donations: {
       count: donations.length,

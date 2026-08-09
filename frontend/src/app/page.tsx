@@ -1,3 +1,4 @@
+import { pageMetadata } from "@/lib/seo";
 import Link from "next/link";
 import {
   ButtonLink,
@@ -7,6 +8,14 @@ import {
   Lead,
   Section,
 } from "@/components/ui";
+
+export const metadata = pageMetadata({
+  title: "Sustained Life, Inc. | Food Is Medicine",
+  description:
+    "Sustained Life equips people and communities to steward food, health, relationships, and resources for whole-person flourishing.",
+  path: "/",
+  absoluteTitle: true,
+});
 
 const pathways = [
   {

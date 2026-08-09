@@ -1,16 +1,16 @@
 "use client";
 
 import { useActionState } from "react";
-import { submitContact, type FormState } from "@/app/actions";
+import { submitMethodRequest, type FormState } from "@/app/actions";
 
 const initialState: FormState = { ok: false, message: "" };
 
 const fieldClass =
   "min-h-12 w-full rounded-[0.45rem] border border-[#8b9d97] bg-white px-3 py-2 text-ink";
 
-export function ContactForm() {
+export function MethodRequestForm() {
   const [state, formAction, pending] = useActionState(
-    submitContact,
+    submitMethodRequest,
     initialState,
   );
 
@@ -46,16 +46,7 @@ export function ContactForm() {
           />
         </label>
         <label className="flex flex-col gap-1.5 font-extrabold text-forest-dark">
-          Phone <span className="font-normal text-muted">(optional)</span>
-          <input
-            name="phone"
-            type="tel"
-            autoComplete="tel"
-            className={`${fieldClass} font-normal`}
-          />
-        </label>
-        <label className="flex flex-col gap-1.5 font-extrabold text-forest-dark sm:col-span-2">
-          Organization <span className="font-normal text-muted">(optional)</span>
+          Organization
           <input
             name="organization"
             autoComplete="organization"
@@ -63,21 +54,19 @@ export function ContactForm() {
           />
         </label>
         <label className="flex flex-col gap-1.5 font-extrabold text-forest-dark sm:col-span-2">
-          What can we help with?
-          <select required name="topic" className={`${fieldClass} font-normal`}>
-            <option value="">Select a topic</option>
-            <option>General question</option>
-            <option>The Sustained Life Method</option>
-            <option>Speaking or workshop</option>
-            <option>Community partnership</option>
+          Area of interest
+          <select name="interest" className={`${fieldClass} font-normal`}>
+            <option>General information</option>
+            <option>Workshop</option>
+            <option>Speaking engagement</option>
+            <option>Partnership</option>
+            <option>Curriculum information</option>
+            <option>Organizational consultation</option>
             <option>Healthy Pantry initiative</option>
-            <option>Resources</option>
-            <option>Giving</option>
-            <option>Media</option>
           </select>
         </label>
         <label className="flex flex-col gap-1.5 font-extrabold text-forest-dark sm:col-span-2">
-          Message
+          What are you hoping to accomplish?
           <textarea
             required
             name="message"
@@ -100,7 +89,7 @@ export function ContactForm() {
             disabled={pending}
             className="btn-lift inline-flex min-h-12 items-center justify-center rounded-full border-2 border-transparent bg-forest px-[1.15rem] py-3 text-sm font-extrabold text-white transition-[transform,background-color] hover:-translate-y-0.5 hover:bg-forest-dark disabled:opacity-60"
           >
-            {pending ? "Sending…" : "Send Message"}
+            {pending ? "Sending…" : "Request Information"}
           </button>
           {state.message ? (
             <p

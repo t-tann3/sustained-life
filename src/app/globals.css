@@ -1,0 +1,93 @@
+@import "tailwindcss";
+
+:root {
+  --background: #eef2f0;
+  --foreground: #1a2a24;
+  --muted: #4d6359;
+  --surface: #f7f9f8;
+  --ink: #0f241c;
+  --accent: #1f6b4f;
+  --accent-deep: #134835;
+  --highlight: #c4a35a;
+  --line: rgba(15, 36, 28, 0.12);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-surface: var(--surface);
+  --color-ink: var(--ink);
+  --color-accent: var(--accent);
+  --color-accent-deep: var(--accent-deep);
+  --color-highlight: var(--highlight);
+  --color-line: var(--line);
+  --font-sans: var(--font-sans);
+  --font-display: var(--font-display);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), ui-sans-serif, sans-serif;
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes soft-zoom {
+  from {
+    transform: scale(1.06);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes draw-line {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.9s ease-out both;
+}
+
+.animate-fade-up-delay {
+  animation: fade-up 0.9s ease-out 0.15s both;
+}
+
+.animate-fade-up-delay-2 {
+  animation: fade-up 0.9s ease-out 0.3s both;
+}
+
+.animate-soft-zoom {
+  animation: soft-zoom 8s ease-out both;
+}
+
+.animate-draw-line {
+  transform-origin: left;
+  animation: draw-line 1s ease-out 0.45s both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-fade-up,
+  .animate-fade-up-delay,
+  .animate-fade-up-delay-2,
+  .animate-soft-zoom,
+  .animate-draw-line {
+    animation: none;
+  }
+}

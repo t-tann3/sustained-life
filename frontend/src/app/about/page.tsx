@@ -124,15 +124,15 @@ export default function AboutPage() {
 
       <Section dark>
         <Container>
-          <div className="grid items-start gap-10 lg:grid-cols-2">
-            <div>
-              <Eyebrow light>Meet our founder</Eyebrow>
-              <h2 className="mb-2 font-display text-[clamp(2rem,4vw,3.5rem)] text-paper">
-                Sophia Loren Blake
-              </h2>
-              <Lead className="mb-6 text-[#e2eee8]">
-                Founder and President
-              </Lead>
+          <div>
+            <Eyebrow light>Meet our founder</Eyebrow>
+            <h2 className="mb-2 font-display text-[clamp(2rem,4vw,3.5rem)] text-paper">
+              Sophia Loren Blake
+            </h2>
+            <Lead className="mb-8 text-[#e2eee8]">
+              Founder and President
+            </Lead>
+            <div className="grid items-start gap-10 lg:grid-cols-2">
               <Image
                 src="/images/sophia-loren-blake.jpg"
                 alt="Sophia Loren Blake"
@@ -140,21 +140,21 @@ export default function AboutPage() {
                 height={900}
                 className="h-auto w-full max-w-md rounded-xl object-cover"
               />
-            </div>
-            <div className="space-y-4 text-[#e6eee9]">
-              <p>
-                Sophia Loren Blake brings a life of public service, ministry,
-                and community leadership to Sustained Life. She is the Executive
-                Director of New Vision Community Outreach Association FXBG, a
-                licensed minister, and a retired federal investigator with 39
-                years of public service.
-              </p>
-              <p>
-                Her advocacy for Food Is Medicine and whole-person wellness
-                grows from a conviction that nourishing food is vital—and that
-                lasting change also requires practical wisdom, supportive
-                relationships, stewardship, and healthy community systems.
-              </p>
+              <div className="space-y-4 text-[#e6eee9]">
+                <p>
+                  Sophia Loren Blake brings a life of public service, ministry,
+                  and community leadership to Sustained Life. She is the Executive
+                  Director of New Vision Community Outreach Association FXBG, a
+                  licensed minister, and a retired federal investigator with 39
+                  years of public service.
+                </p>
+                <p>
+                  Her advocacy for Food Is Medicine and whole-person wellness
+                  grows from a conviction that nourishing food is vital—and that
+                  lasting change also requires practical wisdom, supportive
+                  relationships, stewardship, and healthy community systems.
+                </p>
+              </div>
             </div>
           </div>
         </Container>

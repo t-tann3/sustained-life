@@ -91,21 +91,27 @@ const photoReel = [
     title: "Keynote address",
     note: "Suggested wide image",
     caption: "Sophia delivering a keynote on food, dignity, and community health.",
-    aria: "Photo placeholder: Sophia Loren Blake delivering a keynote address",
+    aria: "Sophia Loren Blake keynote: Hunger Has No Face",
+    src: "/images/hunger-has-no-face-keynote.png",
+    alt: "Stage screen for the Hunger Has No Face keynote featuring Sophia Loren Blake",
   },
   {
     label: "Photo 02",
     title: "Community workshop",
     note: "Suggested portrait image",
     caption: "Turning shared concerns into practical next steps.",
-    aria: "Photo placeholder: Sophia Loren Blake facilitating a community workshop",
+    aria: "Sophia Loren Blake with a community partner at a workshop",
+    src: "/images/community-workshop.png",
+    alt: "Sophia Loren Blake standing with a community partner at an event",
   },
   {
     label: "Photo 03",
     title: "Partners at work",
     note: "Suggested candid image",
     caption: "Cross-sector partners building stronger local systems.",
-    aria: "Photo placeholder: Community partners meeting around a table",
+    aria: "Sophia Loren Blake with a community partner at an event",
+    src: "/images/partners-at-work.png",
+    alt: "Sophia Loren Blake standing with a community partner after an event",
   },
   {
     tall: true,
@@ -113,36 +119,18 @@ const photoReel = [
     title: "Advocacy in action",
     note: "Suggested vertical image",
     caption: "Bringing community realities into policy conversations.",
-    aria: "Photo placeholder: Sophia Loren Blake speaking with congressional staff",
+    aria: "Sophia Loren Blake with colleagues at the Russell Senate Office Building",
+    src: "/images/advocacy-capitol-hill.png",
+    alt: "Sophia Loren Blake with colleagues on the steps of the Russell Senate Office Building",
   },
   {
     label: "Photo 05",
     title: "Learning together",
     note: "Suggested candid image",
     caption: "Practical education designed for real life.",
-    aria: "Photo placeholder: Attendees participating in a nutrition education session",
-  },
-  {
-    wide: true,
-    label: "Photo 06",
-    title: "Shared commitment",
-    note: "Suggested group image",
-    caption: "Community, healthcare, faith, and food-access partners together.",
-    aria: "Photo placeholder: Group photograph with community and healthcare partners",
-  },
-  {
-    label: "Photo 07",
-    title: "Capitol Hill",
-    note: "Suggested location image",
-    caption: "Advocating for sustainable hunger-relief policy.",
-    aria: "Photo placeholder: Sophia Loren Blake at the Feeding America Fly-In",
-  },
-  {
-    label: "Photo 08",
-    title: "After the talk",
-    note: "Suggested candid image",
-    caption: "Making room for questions, stories, and connection.",
-    aria: "Photo placeholder: Sophia Loren Blake in conversation with event attendees",
+    aria: "Sophia Loren Blake with a colleague in front of the U.S. Capitol",
+    src: "/images/learning-together-capitol.png",
+    alt: "Sophia Loren Blake and a colleague standing in front of the U.S. Capitol",
   },
 ];
 
@@ -319,7 +307,8 @@ export default function SpeakingPage() {
               <PhotoPlaceholder
                 label="Featured speaking photograph"
                 title="Ideas become powerful when communities can use them."
-                note="Replace with an approved event image."
+                src="/images/fredericksburg-regional-food-bank.png"
+                alt="Sophia Loren Blake with a partner at the Fredericksburg Regional Food Bank"
                 className="min-h-[22rem] rounded-[1.25rem]"
               />
               <figcaption className="mt-3 text-sm text-white/75">
@@ -438,7 +427,8 @@ export default function SpeakingPage() {
               <PhotoPlaceholder
                 label="Recognition photograph"
                 title="Leadership that makes healthier choices possible."
-                note="Replace with an approved award-event image."
+                src="/images/influential-women-award.png"
+                alt="Sophia Loren Blake holding the Most Influential Women award"
                 className="min-h-64 rounded-[1.25rem]"
               />
               <figcaption className="mt-3 text-sm text-muted">
@@ -551,6 +541,8 @@ export default function SpeakingPage() {
                   title={photo.title}
                   note={photo.note}
                   ariaLabel={photo.aria}
+                  src={"src" in photo ? photo.src : undefined}
+                  alt={"alt" in photo ? photo.alt : undefined}
                   className={`rounded-[1.1rem] ${"tall" in photo && photo.tall ? "min-h-[28rem]" : "min-h-56"}`}
                 />
                 <figcaption className="mt-2 text-sm text-muted">

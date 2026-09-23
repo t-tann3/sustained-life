@@ -17,6 +17,25 @@ export const metadata = pageMetadata({
   path: '/about',
 });
 
+const team = [
+  {
+    name: "Rebecca Brown",
+    body: "Rebecca Brown, retired college professor, brings a career of researching the food/health connection and a genuine love of cooking to the program — she’s the one making sure “nourishing food” isn’t an abstraction, but something people can actually make simply, sustainably, and with confidence in their own kitchens.",
+  },
+  {
+    name: "Mayron Platt Shumpert, MSN, RN, CNOR, NPD-BC",
+    body: "Mayron Platt Shumpert, MSN, RN, CNOR, NPD-BC, brings 36 years of nursing experience, including 27 years in perioperative care and 18 years in clinical education and leadership. She keeps our health guidance grounded in evidence-based practice and clinical rigor — not just good intentions.",
+  },
+  {
+    name: "Katrina Dill",
+    body: "Katrina Dill, a Master Medical Qigong Practitioner and co-founder of Yes to Holistic Health, brings a background in adult education and program design, plus a live connection to the Unitarian Universalist Fellowship of Fredericksburg’s emerging Community Wellness Hub — turning “whole-person wellness” from a phrase on our website into an actual pipeline of programs and partners.",
+  },
+  {
+    name: "Yvette Anderson, PMP",
+    body: "Yvette Anderson, PMP, brings more than 35 years of project management and strategic leadership on complex federal government initiatives, plus a bachelor’s degree in accounting from Jackson State University. She is the one making sure programs are planned, resourced, and delivered on time and within budget — the same discipline and financial rigor she applies as owner of her own business, Crafts by Yvette, LLC.",
+  },
+];
+
 const values = [
   ["Dignity", "We see people as partners with strengths, insight, and agency."],
   [
@@ -142,21 +161,76 @@ export default function AboutPage() {
               />
               <div className="space-y-4 text-[#e6eee9]">
                 <p>
-                  Sophia Loren Blake brings a life of public service, ministry,
-                  and community leadership to Sustained Life. She is the Executive
-                  Director of New Vision Community Outreach Association FXBG, a
-                  licensed minister, and a retired federal investigator with 39
-                  years of public service.
+                  Before Sustained Life, Sophia Loren Blake spent 39 years in
+                  public service, retiring in March 2023 as an Investigator with
+                  the Defense Contract Audit Agency, U.S. Department of War,
+                  where she specialized in fraud, waste, and abuse investigations
+                  and digital forensics. The same principles that governed that
+                  work — justice, integrity, and accountability — now anchor her
+                  nonprofit leadership.
                 </p>
                 <p>
-                  Her advocacy for Food Is Medicine and whole-person wellness
-                  grows from a conviction that nourishing food is vital—and that
-                  lasting change also requires practical wisdom, supportive
-                  relationships, stewardship, and healthy community systems.
+                  She founded Sustained Life in 2018 to advance a simple
+                  conviction: food is medicine, and health is holistic —
+                  nurturing body, mind, and soul. In December 2023, she was
+                  licensed as a minister with New Vision Ministries, pairing
+                  institutional discipline with ministerial care.
                 </p>
+                <p>
+                  Since 2023, she has volunteered as Executive Director of New
+                  Vision Community Outreach Association FXBG, showing up every
+                  2nd and 4th Saturday to lead its healthy pantry initiative.
+                  That commitment is not just administrative. It has put her in
+                  direct, ongoing conversation with neighbors about food
+                  insecurity and diet-related disease — the conversations that
+                  shaped how Sustained Life approaches this work in the first
+                  place. In 2025, the pantry initiative served 655 families —
+                  4,318 individuals. In March 2026, she was named one of Central
+                  Virginia’s Most Influential Women by ACT Enough, Inc. for her
+                  advocacy on food insecurity.
+                </p>
+                <blockquote className="border-l-[3px] border-gold py-1 pl-5">
+                  <p className="mb-0">
+                    “From the federal halls of justice to the frontlines of
+                    faith and food equity” — her work traces a direct line from
+                    investigating institutional failure to building the systems
+                    that prevent it.
+                  </p>
+                </blockquote>
               </div>
             </div>
           </div>
+        </Container>
+      </Section>
+
+      <Section tint>
+        <Container>
+          <h2 className="mb-4 font-display text-[clamp(2rem,4vw,3.5rem)] text-forest-dark">
+            Our Team
+          </h2>
+          <Lead className="mb-8">
+            Sophia built Sustained Life around people whose expertise fills in
+            exactly where hers does not:
+          </Lead>
+          <div className="grid gap-5 md:grid-cols-2">
+            {team.map(({ name, body }) => (
+              <Card key={name}>
+                <h3 className="mb-3 font-display text-[1.45rem] text-forest-dark">
+                  {name}
+                </h3>
+                <p className="mb-0">{body}</p>
+              </Card>
+            ))}
+          </div>
+          <p className="mt-8 max-w-[52rem]">
+            This is not a founder claiming to be the expert in everything. It’s
+            a founder who knows how to trace a systemic problem to its source,
+            paired with a professor who makes the food itself approachable, a
+            36-year nursing veteran who keeps the health claims honest, a
+            project management professional who keeps programs on schedule and
+            on budget, and an educator already building community wellness
+            infrastructure elsewhere in Fredericksburg.
+          </p>
         </Container>
       </Section>
 

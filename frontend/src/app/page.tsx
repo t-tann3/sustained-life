@@ -56,13 +56,18 @@ export default function HomePage() {
         <div className="pointer-events-none absolute -right-32 -bottom-48 h-[34rem] w-[34rem] rounded-full border border-white/18 shadow-[0_0_0_4rem_rgba(255,255,255,0.035),0_0_0_8rem_rgba(255,255,255,0.025)]" />
         <Container className="relative z-10 max-w-[59rem]">
           <Eyebrow light>Food Is Medicine • Body, Mind, Soul.</Eyebrow>
-          <h1 className="animate-fade-up mb-4 font-display text-[clamp(2.65rem,7vw,5.75rem)] leading-[1.12] tracking-[-0.045em] text-balance text-paper">
-            Nourishing lives. Strengthening communities.
+          <h1 className="animate-fade-up mb-4 font-display text-[clamp(2.15rem,5.2vw,4.15rem)] leading-[1.12] tracking-[-0.04em] text-balance text-paper">
+            She spent 39 years investigating fraud, waste, and abuse. Now she
+            is applying that to food insecurity.
           </h1>
           <Lead className="animate-fade-up-delay text-[#e7f0eb]">
-            We help people and communities connect nourishing food, practical
-            wisdom, supportive relationships, and responsible stewardship—so
-            everyone has a credible pathway to thrive.
+            Sophia Loren Blake retired in 2023 after a federal career
+            specializing in fraud, waste, and abuse investigations and digital
+            forensics. In 2018, she founded Sustained Life on a conviction
+            shaped by real conversations — the ones she has, every 2nd and 4th
+            Saturday, with neighbors facing food insecurity and diet-related
+            disease. That work has grown into a pantry initiative that served
+            655 families and 4,318 individuals in 2025 alone.
           </Lead>
           <div className="animate-fade-up-delay-2 mt-7 flex flex-wrap gap-3">
             <ButtonLink href="/method" variant="gold">

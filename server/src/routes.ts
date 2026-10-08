@@ -19,6 +19,10 @@ import {
   parseNewsletterInput,
 } from "./handlers/newsletter.js";
 import {
+  handlePartnershipRequestSubmission,
+  parsePartnershipRequestInput,
+} from "./handlers/partnership-request.js";
+import {
   handleSpeakingRequestSubmission,
   parseSpeakingRequestInput,
 } from "./handlers/speaking-request.js";
@@ -32,6 +36,7 @@ const VALID_TYPES = new Set<SubmissionType>([
   "contact",
   "method-request",
   "speaking-request",
+  "partnership-request",
   "newsletter",
 ]);
 
@@ -62,6 +67,13 @@ routes.post("/method-request", async (req, res) => {
 routes.post("/newsletter", async (req, res) => {
   const result = await handleNewsletterSubmission(
     parseNewsletterInput(req.body ?? {}),
+  );
+  res.status(result.ok ? 201 : 400).json(result);
+});
+
+routes.post("/partnership-request", async (req, res) => {
+  const result = await handlePartnershipRequestSubmission(
+    parsePartnershipRequestInput(req.body ?? {}),
   );
   res.status(result.ok ? 201 : 400).json(result);
 });

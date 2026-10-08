@@ -36,7 +36,7 @@ const pathways = [
     icon: "∞",
     title: "Community Partnership",
     body: "Collaboration with churches, pantries, schools, health partners, and local leaders to strengthen healthy systems.",
-    href: "/contact",
+    href: "/partnerships",
     link: "Partner with us",
   },
 ];
@@ -57,17 +57,13 @@ export default function HomePage() {
         <Container className="relative z-10 max-w-[59rem]">
           <Eyebrow light>Food Is Medicine • Body, Mind, Soul.</Eyebrow>
           <h1 className="animate-fade-up mb-4 font-display text-[clamp(2.15rem,5.2vw,4.15rem)] leading-[1.12] tracking-[-0.04em] text-balance text-paper">
-            She spent 39 years investigating fraud, waste, and abuse. Now she
-            is applying that to food insecurity.
+            Whole-person care for the body, mind, and soul.
           </h1>
           <Lead className="animate-fade-up-delay text-[#e7f0eb]">
-            Sophia Loren Blake retired in 2023 after a federal career
-            specializing in fraud, waste, and abuse investigations and digital
-            forensics. In 2018, she founded Sustained Life on a conviction
-            shaped by real conversations — the ones she has, every 2nd and 4th
-            Saturday, with neighbors facing food insecurity and diet-related
-            disease. That work has grown into a pantry initiative that served
-            655 families and 4,318 individuals in 2025 alone.
+            Sustained Life equips people and communities to steward food,
+            health, relationships, and resources for lasting well-being.
+            Practical education, partnerships, and Healthy Pantry work make
+            nourishing choices easier to understand, practice, and sustain.
           </Lead>
           <div className="animate-fade-up-delay-2 mt-7 flex flex-wrap gap-3">
             <ButtonLink href="/method" variant="gold">

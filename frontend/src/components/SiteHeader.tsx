@@ -61,7 +61,7 @@ export function SiteHeader() {
                     href={item.href}
                     aria-current={current ? "page" : undefined}
                     onClick={() => setOpen(false)}
-                    className={`block whitespace-nowrap rounded-[0.45rem] px-2.5 py-2 text-[0.86rem] font-bold no-underline transition-colors md:px-[0.58rem] ${
+                    className={`block whitespace-nowrap rounded-[0.45rem] px-2.5 py-2 text-[0.86rem] font-bold no-underline transition-colors md:px-1.5 md:text-[0.8rem] ${
                       current
                         ? "bg-sage text-forest"
                         : "text-ink hover:bg-sage hover:text-forest"

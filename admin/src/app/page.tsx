@@ -11,6 +11,7 @@ import {
   type AdminStats,
   type ContactPayload,
   type MethodRequestPayload,
+  type PartnershipRequestPayload,
   type SpeakingRequestPayload,
   type Submission,
 } from "@/lib/api";
@@ -33,7 +34,8 @@ export default function OverviewPage() {
               (item) =>
                 item.type === "contact" ||
                 item.type === "method-request" ||
-                item.type === "speaking-request",
+                item.type === "speaking-request" ||
+                item.type === "partnership-request",
             )
             .slice(0, 5),
         );
@@ -64,6 +66,11 @@ export default function OverviewPage() {
           <StatCard
             label="Speaking requests"
             value={String(stats.speakingRequests ?? 0)}
+            href="/messages"
+          />
+          <StatCard
+            label="Partnership requests"
+            value={String(stats.partnershipRequests ?? 0)}
             href="/messages"
           />
           <StatCard
@@ -130,6 +137,28 @@ function RecentRow({ item }: { item: Submission }) {
           </p>
           <p className="text-xs font-bold uppercase tracking-wide text-muted">
             Contact · {payload.topic}
+          </p>
+        </div>
+        <p className="mt-1 text-sm text-muted">{payload.email}</p>
+        <p className="mt-2 line-clamp-2 text-sm">{payload.message}</p>
+        <p className="mt-2 text-xs text-muted">{formatDate(item.createdAt)}</p>
+      </Link>
+    );
+  }
+
+  if (item.type === "partnership-request") {
+    const payload = item.payload as PartnershipRequestPayload;
+    return (
+      <Link
+        href="/messages"
+        className="block border border-line bg-paper p-4 no-underline transition-colors hover:bg-sage/30"
+      >
+        <div className="flex flex-wrap items-center justify-between gap-2">
+          <p className="font-semibold text-forest">
+            {payload.firstName} {payload.lastName}
+          </p>
+          <p className="text-xs font-bold uppercase tracking-wide text-muted">
+            Partnership · {payload.inquiryType}
           </p>
         </div>
         <p className="mt-1 text-sm text-muted">{payload.email}</p>

@@ -53,6 +53,7 @@ export type AdminStats = {
   contacts: number;
   methodRequests: number;
   speakingRequests: number;
+  partnershipRequests: number;
   newsletterSubscribers: number;
   donations: {
     count: number;
@@ -97,18 +98,41 @@ export type SpeakingRequestPayload = {
   details?: string;
 };
 
+export type PartnershipRequestPayload = {
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone?: string;
+  organization?: string;
+  inquiryType: string;
+  eventName?: string;
+  eventDate?: string;
+  eventLocation?: string;
+  quantity?: string;
+  audience?: string;
+  budget?: string;
+  customization?: string;
+  message: string;
+};
+
 export type NewsletterPayload = {
   email: string;
 };
 
 export type Submission = {
   id: string;
-  type: "contact" | "method-request" | "speaking-request" | "newsletter";
+  type:
+    | "contact"
+    | "method-request"
+    | "speaking-request"
+    | "partnership-request"
+    | "newsletter";
   createdAt: string;
   payload:
     | ContactPayload
     | MethodRequestPayload
     | SpeakingRequestPayload
+    | PartnershipRequestPayload
     | NewsletterPayload
     | Record<string, unknown>;
 };

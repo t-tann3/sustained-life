@@ -47,6 +47,7 @@ export const sitemapEntries = [
   { path: "/about", changeFrequency: "monthly", priority: 0.9 },
   { path: "/method", changeFrequency: "monthly", priority: 0.9 },
   { path: "/food-is-medicine", changeFrequency: "monthly", priority: 0.9 },
+  { path: "/partnerships", changeFrequency: "monthly", priority: 0.9 },
   { path: "/resources", changeFrequency: "weekly", priority: 0.8 },
   { path: "/speaking", changeFrequency: "monthly", priority: 0.8 },
   { path: "/blog", changeFrequency: "weekly", priority: 0.8 },

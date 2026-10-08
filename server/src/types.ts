@@ -2,6 +2,7 @@ export type SubmissionType =
   | "contact"
   | "method-request"
   | "speaking-request"
+  | "partnership-request"
   | "newsletter";
 
 export type ApiResult<T = undefined> =
@@ -33,6 +34,24 @@ export type NewsletterInput = {
   email: string;
 };
 
+export type PartnershipRequestInput = {
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone?: string;
+  organization?: string;
+  inquiryType: string;
+  eventName?: string;
+  eventDate?: string;
+  eventLocation?: string;
+  quantity?: string;
+  audience?: string;
+  budget?: string;
+  customization?: string;
+  message: string;
+  consent: boolean;
+};
+
 export type SpeakingRequestInput = {
   name: string;
   organization: string;
@@ -57,6 +76,7 @@ export type StoredSubmission = {
     | ContactInput
     | MethodRequestInput
     | SpeakingRequestInput
+    | PartnershipRequestInput
     | NewsletterInput;
 };
 
@@ -83,6 +103,7 @@ export type AdminStats = {
   contacts: number;
   methodRequests: number;
   speakingRequests: number;
+  partnershipRequests: number;
   newsletterSubscribers: number;
   donations: {
     count: number;

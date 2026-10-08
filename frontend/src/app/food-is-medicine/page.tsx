@@ -224,7 +224,7 @@ export default function FoodIsMedicinePage() {
               <ButtonLink href="/resources" variant="gold">
                 Explore Resources
               </ButtonLink>
-              <ButtonLink href="/contact" variant="outline-light">
+              <ButtonLink href="/partnerships" variant="outline-light">
                 Partner With Us
               </ButtonLink>
             </div>

@@ -10,6 +10,7 @@ const exploreLinks = [
   { href: "/about", label: "About us" },
   { href: "/method", label: "The Sustained Life Method" },
   { href: "/food-is-medicine", label: "Food Is Medicine" },
+  { href: "/partnerships", label: "Partnerships" },
   { href: "/speaking", label: "Speaking & Advocacy" },
 ] as const;
 

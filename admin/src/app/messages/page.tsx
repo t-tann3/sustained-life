@@ -7,11 +7,12 @@ import {
   formatDate,
   type ContactPayload,
   type MethodRequestPayload,
+  type PartnershipRequestPayload,
   type SpeakingRequestPayload,
   type Submission,
 } from "@/lib/api";
 
-type Tab = "contact" | "method-request" | "speaking-request";
+type Tab = "contact" | "method-request" | "speaking-request" | "partnership-request";
 
 export default function MessagesPage() {
   const [tab, setTab] = useState<Tab>("contact");
@@ -40,6 +41,7 @@ export default function MessagesPage() {
   const countsLabel = useMemo(() => {
     if (tab === "contact") return "Contact form";
     if (tab === "speaking-request") return "Speaking requests";
+    if (tab === "partnership-request") return "Partnership requests";
     return "Method requests";
   }, [tab]);
 
@@ -49,7 +51,7 @@ export default function MessagesPage() {
         <div>
           <h2 className="text-2xl font-bold text-forest">Messages</h2>
           <p className="mt-1 text-muted">
-            Inbox for Contact, Method, and Speaking request submissions.
+            Inbox for Contact, Method, Speaking, and Partnership request submissions.
           </p>
         </div>
         <button
@@ -77,6 +79,11 @@ export default function MessagesPage() {
           onClick={() => setTab("speaking-request")}
           label="Speaking requests"
         />
+        <TabButton
+          active={tab === "partnership-request"}
+          onClick={() => setTab("partnership-request")}
+          label="Partnership requests"
+        />
       </div>
 
       <div className="mb-4 flex items-center justify-between gap-3">
@@ -102,7 +109,9 @@ export default function MessagesPage() {
               ? "When someone submits the Contact page form on the public site, their message will show up here."
               : tab === "speaking-request"
                 ? "When someone submits the Speaking page request form, it will show up here."
-                : "When someone submits the Method request form, it will show up here."}
+                : tab === "partnership-request"
+                  ? "When someone submits the Partnerships page request form, it will show up here."
+                  : "When someone submits the Method request form, it will show up here."}
           </p>
         </div>
       ) : null}
@@ -114,6 +123,9 @@ export default function MessagesPage() {
           }
           if (item.type === "speaking-request") {
             return <SpeakingCard key={item.id} item={item} />;
+          }
+          if (item.type === "partnership-request") {
+            return <PartnershipCard key={item.id} item={item} />;
           }
           return <MethodCard key={item.id} item={item} />;
         })}
@@ -248,6 +260,50 @@ function SpeakingCard({ item }: { item: Submission }) {
           value={payload.details || "—"}
           className="sm:col-span-2"
         />
+      </dl>
+    </article>
+  );
+}
+
+function PartnershipCard({ item }: { item: Submission }) {
+  const payload = item.payload as PartnershipRequestPayload;
+
+  return (
+    <article className="border border-line bg-paper p-5">
+      <div className="flex flex-wrap items-start justify-between gap-3">
+        <div>
+          <p className="text-xs font-bold uppercase tracking-[0.12em] text-muted">
+            Partnership request
+          </p>
+          <h3 className="mt-1 text-lg font-bold text-forest">
+            {payload.firstName} {payload.lastName}
+          </h3>
+          <p className="text-sm text-muted">{formatDate(item.createdAt)}</p>
+        </div>
+        <p className="rounded bg-sage px-2 py-1 text-xs font-bold uppercase tracking-wide text-forest">
+          {payload.inquiryType}
+        </p>
+      </div>
+      <dl className="mt-4 grid gap-3 text-sm sm:grid-cols-2">
+        <Field label="Email" value={payload.email} />
+        <Field label="Phone" value={payload.phone || "—"} />
+        <Field
+          label="Organization"
+          value={payload.organization || "—"}
+          className="sm:col-span-2"
+        />
+        <Field label="Event" value={payload.eventName || "—"} />
+        <Field label="Event date" value={payload.eventDate || "—"} />
+        <Field label="Location" value={payload.eventLocation || "—"} />
+        <Field label="Quantity" value={payload.quantity || "—"} />
+        <Field label="Audience" value={payload.audience || "—"} />
+        <Field label="Budget" value={payload.budget || "—"} />
+        <Field
+          label="Customization"
+          value={payload.customization || "—"}
+          className="sm:col-span-2"
+        />
+        <Field label="Message" value={payload.message} className="sm:col-span-2" />
       </dl>
     </article>
   );
